@@ -3,7 +3,7 @@
 
     <groupId>com.github.donvip.sonarqube</groupId>
     <artifactId>sonar-auth-htpasswd-plugin</artifactId>
-    <version>1.0.0</version>
+    <version>8.9.1-SNAPSHOT</version>
     <packaging>sonar-plugin</packaging>
 
     <name>htpasswd Authentication Plug-in for SonarQube</name>
@@ -27,7 +27,7 @@
     <scm>
         <connection>scm:git:https://github.com/don-vip/sonar-auth-htpasswd.git</connection>
         <url>https://github.com/don-vip/sonar-auth-htpasswd</url>
-        <tag>sonar-auth-htpasswd-plugin-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <issueManagement>
         <system>GitHub Issues</system>
