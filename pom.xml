@@ -1,10 +1,9 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.donvip.sonarqube</groupId>
     <artifactId>sonar-auth-htpasswd-plugin</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>sonar-plugin</packaging>
 
     <name>htpasswd Authentication Plug-in for SonarQube</name>
@@ -28,7 +27,7 @@
     <scm>
         <connection>scm:git:https://github.com/don-vip/sonar-auth-htpasswd.git</connection>
         <url>https://github.com/don-vip/sonar-auth-htpasswd</url>
-        <tag>HEAD</tag>
+        <tag>sonar-auth-htpasswd-plugin-1.0.0</tag>
     </scm>
     <issueManagement>
         <system>GitHub Issues</system>
