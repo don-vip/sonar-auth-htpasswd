@@ -11,8 +11,6 @@ import org.sonar.api.security.ExternalUsersProvider;
 import org.sonar.api.security.SecurityRealm;
 import org.sonar.api.security.UserDetails;
 import org.sonar.api.server.ServerSide;
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
 
 import com.identity4j.connector.ConnectorBuilder;
 import com.identity4j.connector.exception.ConnectorException;
@@ -20,27 +18,9 @@ import com.identity4j.connector.flatfile.FlatFileConfiguration;
 import com.identity4j.connector.htpasswd.HTPasswdConnector;
 import com.identity4j.connector.principal.Identity;
 import com.identity4j.util.MultiMap;
-import com.identity4j.util.crypt.EncoderManager;
-import com.identity4j.util.crypt.impl.DefaultEncoderManager;
-import com.identity4j.util.crypt.impl.UnixDESEncoder;
 
 @ServerSide
 public class HtpasswdSecurityRealm extends SecurityRealm {
-
-    private static final Logger LOGGER = Loggers.get(HtpasswdSecurityRealm.class);
-
-    static {
-        try {
-            // Fix the UNIX DES encoder
-            // Workaround to https://github.com/nervepoint/identity4j/pull/3
-            Class.forName(HTPasswdConnector.class.getName());
-            EncoderManager manager = DefaultEncoderManager.getInstance();
-            manager.removeEncoder(manager.getEncoderById(UnixDESEncoder.ID));
-            manager.addEncoder(new UnixDESEncoderFix());
-        } catch (ClassNotFoundException ex) {
-            LOGGER.error(ex.getMessage(), ex);
-        }
-    }
 
     private String htpasswdLocation;
     private String htgroupsLocation;

@@ -8,31 +8,9 @@ import org.sonar.api.server.authentication.BaseIdentityProvider;
 import org.sonar.api.server.authentication.Display;
 import org.sonar.api.server.authentication.Display.Builder;
 import org.sonar.api.server.authentication.UserIdentity;
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
-
-import com.identity4j.connector.htpasswd.HTPasswdConnector;
-import com.identity4j.util.crypt.EncoderManager;
-import com.identity4j.util.crypt.impl.DefaultEncoderManager;
-import com.identity4j.util.crypt.impl.UnixDESEncoder;
 
 @ServerSide
 public class HtpasswdIdentityProvider implements BaseIdentityProvider {
-
-    private static final Logger LOGGER = Loggers.get(HtpasswdIdentityProvider.class);
-
-    static {
-        try {
-            // Fix the UNIX DES encoder
-            // Workaround to https://github.com/nervepoint/identity4j/pull/3
-            Class.forName(HTPasswdConnector.class.getName());
-            EncoderManager manager = DefaultEncoderManager.getInstance();
-            manager.removeEncoder(manager.getEncoderById(UnixDESEncoder.ID));
-            manager.addEncoder(new UnixDESEncoderFix());
-        } catch (ClassNotFoundException ex) {
-            LOGGER.error(ex.getMessage(), ex);
-        }
-    }
 
     private final HtpasswdSettings settings;
 
